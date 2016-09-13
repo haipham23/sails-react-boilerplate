@@ -1,0 +1,20 @@
+{
+  "name": "sails-react",
+  "description": "a Sails application packed with React",
+  "main": "app.js",
+  "authors": [
+    "kaytrance"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0"
+  }
+}

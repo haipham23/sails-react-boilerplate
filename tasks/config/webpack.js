@@ -19,23 +19,29 @@ if (prod)
 module.exports = function(grunt) {
     grunt.config.set('webpack', {
         dev: {
-            context: 'assets/app',
-            entry: './app.js',
+            context: 'assets/js/app',
+            entry: './app.jsx',
             module: {
                 loaders: [{
-                    test: /\.js?$/,
+                    test: /\.jsx$/,
                     exclude: /(node_modules|bower_components)/,
                     loader: 'babel-loader',
                     query: {
                         presets: ['react', 'es2015'],
                         plugins: [],
                     }
-                }]
+                },
+                { test: /\.css$/, loader: "style!css" },
+                { test: /\.(png|jpg|jpeg|gif|woff)$/, loader: 'url?limit=8192' },
+                { test: /\.(otf|eot|ttf)$/, loader: "file?prefix=font/" },
+                { test: /\.svg$/, loader: "file" }
+              ]
             },
             resolve: {
                 root: [
                     path.resolve(project_dir)
                 ],
+                extensions: ['', '.js', '.jsx', '.json']
             },
             output: {
                 path: ".tmp/public/js",
@@ -60,8 +66,8 @@ module.exports = function(grunt) {
                 reasons: false,
                 children: false,
                 source: false,
-                errors: false,
-                errorDetails: false,
+                errors: true,
+                errorDetails: true,
                 warnings: false,
                 publicPath: false
             }
